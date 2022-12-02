@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Create dir
+name="$(printf "day%02d" "$1")"
+cargo new --bin "$name"
+cd "$name" || exit
+URL="https://adventofcode.com/2022/day/$1/input"
+curl "$URL" --cookie "session=$AOC_SESSION" -s | tee "input"
