@@ -12,8 +12,8 @@ fn main() {
         })
         .collect::<Vec<(i32, i32)>>();
 
-    solve_one(&input);
-    solve_two(&input);
+    p1(&input);
+    p2(&input);
 }
 
 fn to_numeric(draw: &str) -> i32 {
@@ -24,7 +24,7 @@ fn to_numeric(draw: &str) -> i32 {
     }
 }
 
-fn solve_one(input: &[(i32, i32)]) {
+fn p1(input: &[(i32, i32)]) {
     println!(
         "{}",
         input.iter().fold(0, |a, h| {
@@ -37,7 +37,7 @@ fn solve_one(input: &[(i32, i32)]) {
     );
 }
 
-fn solve_two(input: &[(i32, i32)]) {
+fn p2(input: &[(i32, i32)]) {
     let res_map = HashMap::from([(1, (2, 3)), (2, (3, 1)), (3, (1, 2))]);
     println!(
         "{}",

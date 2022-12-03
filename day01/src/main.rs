@@ -2,11 +2,11 @@ use std::collections::BinaryHeap;
 
 fn main() {
     let input = include_str!("../input");
-    solve_one(input);
-    solve_two(input);
+    p1(input);
+    p2(input);
 }
 
-fn solve_one(input: &str) {
+fn p1(input: &str) {
     println!(
         "{}",
         input.split("\n\n").fold(0, |a, s| {
@@ -15,7 +15,7 @@ fn solve_one(input: &str) {
     );
 }
 
-fn solve_two(input: &str) {
+fn p2(input: &str) {
     let mut heap = BinaryHeap::new();
     input
         .split("\n\n")
