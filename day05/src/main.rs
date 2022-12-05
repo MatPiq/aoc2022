@@ -10,18 +10,18 @@ fn main() {
 
 fn parse_crates(crates: &str) -> Vec<Vec<char>> {
     let mut crates_vec = vec![vec![]; 10];
-    for line in crates.lines() {
-        let c = line.chars().collect::<Vec<_>>();
-        for (i, j) in (1..c.len()).step_by(4).enumerate() {
-            if c[j].is_alphabetic() {
-                crates_vec[i + 1].insert(0, c[j]);
-            }
-        }
-    }
+
+    crates.lines().for_each(|l| {
+        l.chars()
+            .skip(1)
+            .step_by(4)
+            .enumerate()
+            .filter(|(_, c)| c.is_alphabetic())
+            .for_each(|(i, c)| crates_vec[i + 1].insert(0, c))
+    });
+
     crates_vec
 }
-
-
 
 fn p1(moves: &str, crates: &[Vec<char>]) {
     let mut tmp_crates = crates.to_vec();
@@ -36,8 +36,10 @@ fn p1(moves: &str, crates: &[Vec<char>]) {
 
     println!(
         "{}",
-        (1..tmp_crates.len())
-            .map(|i| tmp_crates[i].last().unwrap())
+        tmp_crates
+            .iter()
+            .skip(1)
+            .map(|v| v.last().unwrap())
             .collect::<String>()
     );
 }
@@ -56,9 +58,10 @@ fn p2(moves: &str, crates: &[Vec<char>]) {
 
     println!(
         "{}",
-        (1..tmp_crates.len())
-            .map(|i| tmp_crates[i].last().unwrap())
+        tmp_crates
+            .iter()
+            .skip(1)
+            .map(|v| v.last().unwrap())
             .collect::<String>()
     );
 }
-
